@@ -133,6 +133,7 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                           left: offsets[f.key].dx,
                           top: offsets[f.key].dy,
                           ontap: () {
+                            print('Tapped on Emoji');
                             scaf.currentState.showBottomSheet((context) {
                               return Sliders(
                                 size: f.key,
@@ -141,6 +142,8 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                             });
                           },
                           onpanupdate: (details) {
+                            print('offsets');
+                            print(offsets);
                             setState(() {
                               offsets[f.key] = Offset(
                                   offsets[f.key].dx + details.delta.dx,
@@ -164,10 +167,12 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                                 });
                               },
                               onpanupdate: (details) {
+
                                 setState(() {
                                   offsets[f.key] = Offset(
-                                      offsets[f.key].dx + details.delta.dx,
-                                      offsets[f.key].dy + details.delta.dy);
+                                    offsets[f.key].dx + details.delta.dx,
+                                    offsets[f.key].dy + details.delta.dy
+                                  );
                                 });
                               },
                               value: f.value.toString(),
